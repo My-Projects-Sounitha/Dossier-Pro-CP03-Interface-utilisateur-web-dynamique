@@ -110,26 +110,26 @@ generateSliderImages();
 
 let buttonCounter = 0; 
 
-const precedentButton = document.querySelector('#precedentButton');
-const nextButton = document.querySelector('#nextButton');
+const buttonElement = document.querySelectorAll('.slider__btn')
 
-precedentButton.addEventListener('click', handleClickOnSliderButton);
-nextButton.addEventListener('click', handleClickOnSliderButton);
+buttonElement.addEventListener('click', handleClickOnSliderButton);
 
 function handleClickOnSliderButton(event){
 
 const arraySliderImage = document.querySelectorAll(".slider__img");
 
+ buttonElement = event.currentTarget;
+
 // on veut faire passer la classe slider__img--current de l'image 1 à la suivante, image +1 au click sur le bouton nextButton
 //on veut faire passer la classe slider__img--current de l'image 1 à la précedente, image -1 au click sur le bouton precedentButton
 
-if(nextButton.id ==="nextButton"){
+if(buttonElement.aria-label ==="Suivant"){
 
     buttonCounter++;
 }
 console.log(buttonCounter);
 
-if(precedentButton.id ==="precedentButton"){
+if(buttonElement.aria-label ==="Précédent"){
     buttonCounter = buttonCounter -1;
 }
 
