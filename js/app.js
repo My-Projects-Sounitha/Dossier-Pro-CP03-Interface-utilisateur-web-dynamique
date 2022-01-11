@@ -105,6 +105,42 @@ function generateSliderImages() {
 // Dés le chargement de la page, on génère les images du slider
 generateSliderImages();
 
+//BONUS => faire défiler les images du slider
+//on cible les boutons précédent et suivant de notre slider.
+
+let buttonCounter = 0; 
+
+const precedentButton = document.querySelector('#precedentButton');
+const nextButton = document.querySelector('#nextButton');
+
+precedentButton.addEventListener('click', handleClickOnSliderButton);
+nextButton.addEventListener('click', handleClickOnSliderButton);
+
+function handleClickOnSliderButton(event){
+
+const arraySliderImage = document.querySelectorAll(".slider__img");
+
+// on veut faire passer la classe slider__img--current de l'image 1 à la suivante, image +1 au click sur le bouton nextButton
+//on veut faire passer la classe slider__img--current de l'image 1 à la précedente, image -1 au click sur le bouton precedentButton
+
+if(nextButton.id ==="nextButton"){
+
+    buttonCounter++;
+}
+console.log(buttonCounter);
+
+if(precedentButton.id ==="precedentButton"){
+    buttonCounter = buttonCounter -1;
+}
+
+arraySliderImage[buttonCounter].classList.add("slider__img--current");
+
+    
+}
+
+
+
+
 
 //ATELIER S03 - partie1 : newsletter
 
