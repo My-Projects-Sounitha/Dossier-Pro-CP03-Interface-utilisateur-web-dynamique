@@ -164,6 +164,78 @@ function handleClickOnButtonClose(event){
 
 //Atelier Saison3 Partie 2 : vérifier les données du formulaire
 
+//Etape 2.1 : l'utilisateur doit pouvoir saisir son adresse e-mail dans le formulaire et nous l'avoir "soumis" (submit)
+function init() {
+const formElement = document.querySelector('form');
+    // On écoute l'événement "submit" sur le formulaire. C'est un événement qui est émis quand on clique sur le bouton de validation du formulaire ou qu'on appuie sur entrée.
+    formElement.addEventListener('submit', handleFormSubmit);
+
+}
+
+function handleFormSubmit(eventSubmit){
+
+    eventSubmit.preventDefault();
+
+const inputElement = document.querySelector(".newsletter__field");
+
+const inputValue = inputElement.value;
+
+console.log(inputValue);
+
+//Etape 2.2 : comparer la réponse de l'ulitilisateur avec le tableau 
+//intégrer le tableau = dans data.js
+//faire le script du data.js dans le html
+
+//créer la balise <p> qui affichera le message d'erreur ou le message de confirmation à la newsletter
+
+for (let domain of forbiddenDomains){
+    
+    // if inputValue.includes dans la valeur du tableau = true
+    //comparer si l'adresse donnée par l'utilisateur = un élément du tableau = true = message d'erreur
+
+    if (inputValue.includes(domain) === true){
+
+        //je veux faire apparaitre <p class ='message'> les adresses jetables ne sont pas admises</p>
+
+        const messageErrorElement = document.createElement ("p") ;
+
+        messageErrorElement.classList.add('message');
+
+        messageErrorElement.textContent = "Les adresses jetables ne sont pas admises" ;
+
+        const asideElement = document.querySelector('.newsletter');
+
+        //fonction append va mettre l'élément messageErrorELement à la fin de l'élément parent Aside
+        // si on utilise prepend, l'élement sera en 1er du parent
+        asideElement.append(messageErrorElement);
+
+    }
+    // le contenu du formulaire = un élément du tableau = false
+    else {
+        return false
+    }
+
+
+}
+
+// on veut récupérer les données de l'utilisateur
+}
+
+
+// On pose un écouteur sur la page pour lancer notre code seulement quand elle est totalement chargée.
+document.addEventListener('DOMContentLoaded', init);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
