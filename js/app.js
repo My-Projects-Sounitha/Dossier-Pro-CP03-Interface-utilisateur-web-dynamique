@@ -1,35 +1,3 @@
-// Fonction de changement de theme light <-> dark
-const changeTheme = function()
-{
-  // On commence par sélectionner la balise sur laquel on va modifier la classe
-  const bodyElement = document.querySelector( "body" );
-  // On pourrait aussi utiliser document.getElementsByTagName( "body" )
-  // Mais comme ell renvoi un tableau, c'est relou
-
-  // On vérifie si l'élement a la classe "theme-dark"
-  if( bodyElement.classList.contains( "theme-dark" ) )
-  {
-    // Si oui, on la retire
-    bodyElement.classList.remove( "theme-dark" );
-  }
-  else
-  {
-    // Si non, on l'ajoute
-    bodyElement.classList.add( "theme-dark" );
-  }
-
-  // Bonus : On peut simplifier la condition grace a classList.toggle
-  // bodyElement.classList.toggle( "theme-dark" );
-
-  // Super bonus, tout en une seule ligne, sans variable intermédiaire
-  // document.querySelector( "body" ).classList.toggle( "theme-dark" );
-}
-
-
-
-// Et on l'appelle tout de suite dés que le fichier .js est chargé
-// createImages();
-
 //================= 
 // Atelier - ETAPE 1
 //================= 
@@ -138,11 +106,17 @@ const handleNewsletterFormSubmit = function( evt )
     
     // On appelle la méthode addMessageToElement pour faire l'ajout de notre erreur
     messages.addMessageToElement( "Les adresses jetables ne sont pas admises", newsletterElement );
-  }
-  
+  }  
   // Bonus : gérer le cas du else, si l'adresse est bonne
   //  - On pourrait ajouter un message en vert de validation
-  //   Je vous laisse faire :D
+  else
+  {
+    // On récupère où veut afficher le message
+    let newsletterElement = document.querySelector( ".newsletter" );
+
+    // On appelle notre nouvelle méthode qui affiche un message de succès
+    messages.addSuccessMessageToElement( "Merci pour votre inscription !", newsletterElement );
+  }
 
   // Bonus
   //  - Une fois le formulaire soumis, adresse valide ou non, on peut "vider" le champ input
@@ -151,9 +125,4 @@ const handleNewsletterFormSubmit = function( evt )
 
 // J'ajoute mon listener
 newsletterFormElement.addEventListener( "submit", handleNewsletterFormSubmit );
-
-
-
-
-
 

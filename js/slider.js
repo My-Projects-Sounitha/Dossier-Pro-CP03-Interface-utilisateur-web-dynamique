@@ -114,9 +114,37 @@ const slider = {
   // changer l'image affichée en fonction de l'index fourni
   goToSlide : function( newImageIndex )
   {
-    // TODO
+    // On vérifie si le nouvel index d'image existe
+    // Ici on s'assure que newImageIndex est entre [0, 2]
+    if( newImageIndex >= 0 && newImageIndex < slider.sliderImages.length )
+    {
+      // On récupère l'image affichée
+      const currentSliderImageElement = document.querySelector( ".slider__img--current" );
+
+      // Ensuite, on lui retire la classe "image actuellement affichée"
+      currentSliderImageElement.classList.remove( "slider__img--current" );
+
+      // On récupère la "prochaine" image à afficher
+      const newSliderImages = document.querySelectorAll( ".slider__img" );
+
+      // Comme mes images ont été ajoutées dans l'ordre, les index de mon tableau newSliderImages
+      // sont dans le même ordre que mon tableay slider.sliderImages
+      // Donc grace à l'index, je peux facilement trouver l'élement de la prochaine image a afficher
+      const newSliderImageElement = newSliderImages[ newImageIndex ];
+
+      // Une fois la nouvelle image trouvée, on lui ajoute la classe current
+      newSliderImageElement.classList.add( "slider__img--current" );
+
+      // Il ne faut pas pas oublier de "sauvegarder" la modification de l'index de l'image affichée
+      slider.currentImageIndex = newImageIndex;
+    }
+    else
+    {
+      console.error( "La slide à afficher n'existe pas !" );
+    }
   }
 }
 
 // On initialise notre module une fois le DOM complètement chargé
 document.addEventListener( "DOMContentLoaded", slider.init );
+
