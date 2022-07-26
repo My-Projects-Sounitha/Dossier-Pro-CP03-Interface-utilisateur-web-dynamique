@@ -16,27 +16,8 @@ const theme = {
     },
   
     // Méthode de switch de theme
-    handleToggleTheme: function( evt )
+    handleToggleTheme: function(  )
     {    
-     /*
-        evt.preventDefault () ;
-        
-        // On commence par sélectionner la balise sur laquel on va modifier la classe
-        const bodyElement = document.querySelector( "body" );
-        // On pourrait aussi utiliser document.getElementsByTagName( "body" )
-        // Mais comme ell renvoi un tableau, c'est relou
-
-        // On vérifie si l'élement a la classe "theme-dark"
-        if( bodyElement.classList.contains( "theme-dark" ) )
-        {
-            // Si oui, on la retire
-            bodyElement.classList.remove( "theme-dark" );
-        }
-        else
-        {
-            // Si non, on l'ajoute
-            bodyElement.classList.add( "theme-dark" );
-        }*/
         
       // On commence par sélectionner la balise sur laquel on va modifier la classe
       const bodyElement = document.querySelector( "body" );
